@@ -6,7 +6,7 @@ edition = "2021"
 readme = "README.md"
 repository = "https://github.com/t-fbd/loc_api"
 license-file = "LICENSE"
-keywords = ["loc.gov", "library of congress", "api", "serde", "documents"]
+keywords = ["gov", "congress", "api", "serde", "documents"]
 categories = ["api-bindings", "data-structures"]
 
 [dependencies]
