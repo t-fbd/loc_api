@@ -7,7 +7,7 @@
 - **Comprehensive Endpoint Support**: Access various LOC API endpoints such as search, collections, items, and resources.
 - **Flexible Parameter Management**: Easily construct and customize query parameters, including filtering, sorting, and formatting options.
 - **Robust Response Models**: Utilize well-defined Rust structures to parse and interact with LOC API responses.
-- **High-Level API Client**: Engage with LOC APIs through an intuitive `ApiClient` that abstracts the complexities of HTTP requests and URL constructions.
+- **High-Level API Client**: Engage with LOC APIs through an `ApiClient` that handles endpoint construction and HTTP requests.
 - **Customizable Configurations**: Override default settings like the base URL for testing or alternative deployments.
 
 ## Table of Contents
@@ -20,7 +20,6 @@
   - [Fetching a Specific Format](#fetching-a-specific-format)
   - [Managing Collections](#managing-collections)
 - [Modules](#modules)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Installation
@@ -30,18 +29,32 @@ Add `loc-api` to your project's `Cargo.toml`:
 ```toml
 [dependencies]
 loc-api = "0.1.0"
+```
+~OR~
+
+You can use `cargo add` to add the dependency to your `Cargo.toml`:
+
+```sh
+cargo add loc-api
+```
+
+
+
+This library depends on `reqwest`, `serde` and `serde_json` for making HTTP requests and serializing/deserializing JSON data, respectively:
+
+```toml
+[dependencies]
 reqwest = { version = "0.11", features = ["blocking", "json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 ```
-
-Ensure that you enable the necessary features for `reqwest` and `serde` as shown above.
 
 ## Usage
 
 ### Creating an API Client
 
 First, initialize the `ApiClient`. You can optionally set the `LOC_API_BASE_URL` environment variable to override the default LOC API base URL.
+Other methods of setting the base URL include using the `ApiClient::with_base_url` constructor or directly modifying the `simple_builders::DEFAULT_BASE_URL` constant.
 
 ```rust
 use loc_api::simple_builders::ApiClient;
@@ -231,7 +244,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ### `endpoints`
 
-Defines the various LOC API endpoints, providing enums and methods to construct URLs based on different endpoints and parameters.
+LOC API endpoints, providing enums and methods to construct URLs based on different endpoints and parameters.
 
 ### `param_models`
 
@@ -239,16 +252,21 @@ Contains structures representing query parameters applicable to multiple endpoin
 
 ### `attribute_models`
 
-Defines the possible attributes (query parameters) that can be used in API requests, including structures like `AttributesSelect` and enums for sorting fields.
+Defines the possible attributes for query parameters that can be used in API requests, including structures like `AttributesSelect` and enums for sorting fields.
 
 ### `format_models`
 
-Represents the possible response formats (`JSON` or `YAML`) and specific format types for endpoints like `audio`, `books`, `maps`, etc.
+Represents the possible response formats (`JSON` or `YAML`) and specific media types for endpoints like `audio`, `books`, `maps`, etc.
 
 ### `response_models`
 
-Contains Rust structures that model the responses from LOC API endpoints, such as `SearchResultResponse`, `ItemResponse`, `FormatResponse`, and others.
+Structures that model the responses from LOC API endpoints, such as `SearchResultResponse`, `ItemResponse`, `FormatResponse`, and others.
 
 ### `simple_builders`
 
 Provides a high-level `ApiClient` for interacting with the LOC API, abstracting endpoint construction, parameter management, and HTTP requests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+```

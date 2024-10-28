@@ -2,7 +2,7 @@
 
 #![allow(unused_imports)]
 
-use loc_api::{self, *};
+use loc_api::response_models::{ItemOrArray, StringOrArray};
 use loc_api::simple_builders::ApiClient;
 use loc_api::attribute_models::{AttributesSelect, ItemAttributes, SortField};
 use loc_api::format_models::{MediaType, Format};
@@ -119,10 +119,10 @@ fn test_format_endpoint() {
     for item in res {
         if let Some(item_details) = item.item {
             match item_details {
-                loc_api::ItemOrArray::Item(item) => {
-                    if let Some(loc_api::StringOrArray::String(title)) = item.title {
+                ItemOrArray::Item(item) => {
+                    if let Some(StringOrArray::String(title)) = item.title {
                         assert!(!title.is_empty(), "Item should have a title");
-                    } else if let Some(loc_api::StringOrArray::Array(titles)) = item.title {
+                    } else if let Some(StringOrArray::Array(titles)) = item.title {
                         for title in titles {
                             assert!(!title.is_empty(), "Each title in the array should have a length");
                         }
@@ -131,12 +131,12 @@ fn test_format_endpoint() {
                         assert!(true, "Item title missing");
                     }
                 }
-                loc_api::ItemOrArray::Array(items) => {
+                ItemOrArray::Array(items) => {
                     assert!(!items.is_empty(), "Array of items should not be empty");
                     for item in items {
-                        if let Some(loc_api::StringOrArray::String(title)) = item.title {
+                        if let Some(StringOrArray::String(title)) = item.title {
                             assert!(!title.is_empty(), "Item should have a title");
-                        } else if let Some(loc_api::StringOrArray::Array(titles)) = item.title {
+                        } else if let Some(StringOrArray::Array(titles)) = item.title {
                             for title in titles {
                                 assert!(!title.is_empty(), "Each title in the array should have a length");
                             }

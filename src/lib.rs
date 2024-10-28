@@ -1,14 +1,5 @@
 //! # Rust API for the [Library of Congress](https://www.loc.gov/apis/)
 
-#![allow(dead_code)]
-
-pub use endpoints::*;
-pub use attribute_models::*;
-pub use format_models::*;
-pub use response_models::*;
-pub use param_models::*;
-pub use simple_builders::*;
-
 /// # Endpoints Module
 ///
 /// This module defines the various endpoints available in the Library of Congress API.
@@ -1616,12 +1607,12 @@ pub mod response_models {
 ///
 /// All methods return a tuple containing the deserialized JSON response and the final URL used
 pub mod simple_builders {
-    use super::*;
+    use super::{response_models::*, param_models::*, attribute_models::*, format_models::*, endpoints::*};
     use std::error::Error;
     use reqwest::blocking::Client;
     use std::env;
 
-    const DEFAULT_BASE_URL: &str = "https://www.loc.gov/";
+    pub const DEFAULT_BASE_URL: &str = "https://www.loc.gov/";
 
     /// A client for interacting with the Library of Congress API.
     ///
@@ -2023,3 +2014,4 @@ pub mod simple_builders {
         }
     }
 }
+
