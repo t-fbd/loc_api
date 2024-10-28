@@ -6,6 +6,8 @@
 /// It includes enums and methods for constructing URLs based on different API endpoints
 /// and their respective parameters.
 pub mod endpoints {
+    use std::error::Error;
+
     use serde::{Serialize, Deserialize};
     use super::{param_models::*, format_models::*};
 
@@ -131,7 +133,7 @@ pub mod endpoints {
         /// let url = format_endpoint.to_url().unwrap();
         /// assert_eq!(url, "https://www.loc.gov/film-and-videos/?fo=json&at=pagination,results&q=dog&fa=subject:animals&c=25&sp=1&sb=title_s");
         /// ```
-        pub fn to_url(&self) -> Result<String, serde_urlencoded::ser::Error> {
+        pub fn to_url(&self) -> Result<String, Box<dyn Error>> {
             let base_url = "https://www.loc.gov";
 
             match self {
@@ -143,7 +145,7 @@ pub mod endpoints {
                     if !query_string.is_empty() {
                         url.push_str(&query_string);
                     } else {
-                        return Err(serde_urlencoded::ser::Error::Custom("No query parameters provided".to_string().into()));
+                        return Err("No query parameters provided".to_string().into());
                     }
 
                     Ok(url)
@@ -157,7 +159,7 @@ pub mod endpoints {
                     if !query_string.is_empty() {
                         url.push_str(&query_string.replace(" ", "-"));
                     } else {
-                        return Err(serde_urlencoded::ser::Error::Custom("No query parameters provided".to_string().into()));
+                        return Err("No query parameters provided".to_string().into());
                     }
 
                     Ok(url)
@@ -170,7 +172,7 @@ pub mod endpoints {
                     if !query_string.is_empty() {
                         url.push_str(&query_string.replace(" ", "-"));
                     } else {
-                        return Err(serde_urlencoded::ser::Error::Custom("No query parameters provided".to_string().into()));
+                        return Err("No query parameters provided".to_string().into());
                     }
 
                     Ok(url)
@@ -184,7 +186,7 @@ pub mod endpoints {
                     if !query_string.is_empty() {
                         url.push_str(&query_string);
                     } else {
-                        return Err(serde_urlencoded::ser::Error::Custom("No query parameters provided".to_string().into()));
+                        return Err("No query parameters provided".to_string().into());
                     }
 
                     Ok(url)
@@ -636,7 +638,7 @@ pub mod response_models {
     use serde::{Deserialize, Serialize};
     use serde_json::Value;
 
-    /// Represents a value that can be either a single String or a Vec<String>.
+    /// Represents a value that can be either a single `String` or a `Vec<String>`.
     #[derive(Debug, Serialize, Deserialize, Clone)]
     #[serde(untagged)]
     pub enum StringOrArray {
@@ -644,7 +646,7 @@ pub mod response_models {
         Array(Vec<String>),
     }
 
-    /// Represents a value that can be either a u32 or a String.
+    /// Represents a value that can be either a `u32` or a `String`.
     #[derive(Debug, Serialize, Deserialize, Clone)]
     #[serde(untagged)]
     pub enum NumberOrString {
@@ -652,7 +654,7 @@ pub mod response_models {
         String(String),
     }
 
-    /// Represents a value that can be either a bool or a String.
+    /// Represents a value that can be either a `bool` or a `String`.
     #[derive(Debug, Serialize, Deserialize, Clone)]
     #[serde(untagged)]
     pub enum BoolOrString {
@@ -676,7 +678,7 @@ pub mod response_models {
         pub filters: Option<ItemOrArray<FilterItem>>,
     }
 
-    /// Represents a single filter within a facet.
+    /// Represents a single filter within a `FacetRes`.
     #[derive(Debug, Serialize, Deserialize, Clone)]
     pub struct FilterItem {
         /// The number of results matching this filter.
