@@ -1621,6 +1621,8 @@ pub mod simple_builders {
     use reqwest::blocking::Client;
     use std::env;
 
+    const DEFAULT_BASE_URL: &str = "https://www.loc.gov/";
+
     /// A client for interacting with the Library of Congress API.
     ///
     /// Provides high-level methods to perform API requests without manually constructing
@@ -1635,6 +1637,8 @@ pub mod simple_builders {
         ///
         /// The base URL can be overridden by setting the `LOC_API_BASE_URL` environment variable.
         ///
+        /// base_url
+        ///
         /// # Examples
         ///
         /// ```rust
@@ -1643,7 +1647,7 @@ pub mod simple_builders {
         /// let client = ApiClient::new();
         /// ```
         pub fn new() -> Self {
-            let base_url = env::var("LOC_API_BASE_URL").unwrap_or_else(|_| "https://www.loc.gov".to_string());
+            let base_url = env::var("LOC_API_BASE_URL").unwrap_or_else(|_| DEFAULT_BASE_URL.to_string());
             let client = Client::new();
             ApiClient { base_url, client }
         }
@@ -1827,7 +1831,7 @@ pub mod simple_builders {
             let common_params = CommonParams {
                 format: Some(Format::default()),
                 attributes,
-                query: query,
+                query,
                 filter: filters,
                 per_page,
                 page,
@@ -1908,7 +1912,7 @@ pub mod simple_builders {
             let common_params = CommonParams {
                 format: Some(Format::default()),
                 attributes,
-                query: query,
+                query,
                 filter: filters,
                 per_page,
                 page,
@@ -1979,7 +1983,7 @@ pub mod simple_builders {
             let common_params = CommonParams {
                 format: Some(Format::default()),
                 attributes,
-                query: query,
+                query,
                 filter: filters,
                 per_page,
                 page,
