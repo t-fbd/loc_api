@@ -29,13 +29,10 @@
 //!### Using the modules directly to construct a URL for querying specific types of `MediaType`
 //!
 //!```rust
-//!use loc_api::{endpoints::*, param_models::*, format_models::*};
+//!use loc_api::{endpoints::*, param_models::*, format_models::*, attribute_models::*,
+//!response_models::*};
 //!
 //!fn main() -> Result<(), Box<dyn std::error::Error>> {
-//!   let common_params = CommonParams {
-//!   use loc_api::{endpoints::*, param_models::*, format_models::*,
-//!   attribute_models::*};
-//!   
 //!   let common_params = CommonParams {
 //!       format: Some(Format::Json),
 //!       attributes: Some(AttributesSelect {
@@ -92,16 +89,19 @@
 //!        Some(SortField::DateDesc),
 //!    )?;
 //!
+//!    println!("url: {}", response.1);
+//!
 //!    // Handle the search results
-//!    if let Some(results) = response.results {
+//!    if let Some(results) = response.0.results {
 //!        for item in results {
-//!            println!("{:?}", item);
+//!            println!("{:#?}", item);
 //!        }
 //!    }
 //!
 //!    Ok(())
 //!}
 //!```
+//!
 
 
 
@@ -1974,6 +1974,7 @@ pub mod simple_builders {
         /// use loc_api::param_models::FacetReq;
         /// use loc_api::attribute_models::{AttributesSelect, SortField};
         /// use loc_api::format_models::Format;
+        /// use loc_api::response_models::CollectionResponse;
         ///
         /// let client = ApiClient::new();
         /// let response = match client.get_collection(
@@ -1988,10 +1989,13 @@ pub mod simple_builders {
         ///     Some(1),
         ///     Some(SortField::TitleS),
         /// ) {
-        ///     Ok(response) => response,
+        ///     Ok(response) => {
+        ///         println!("URL: {}", response.1);
+        ///         response.0
+        ///     },
         ///     Err(e) => {
         ///         eprintln!("Error: {}", e);   
-        ///         loc_api::CollectionResponse::default()
+        ///         CollectionResponse::default()
         ///     }
         /// };
         /// ```
