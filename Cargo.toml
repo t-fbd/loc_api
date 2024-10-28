@@ -1,7 +1,13 @@
 [package]
 name = "loc_api"
+description = "A simple library to interact with the loc.gov API"
 version = "0.1.0"
 edition = "2021"
+readme = "README.md"
+repository = "https://github.com/t-fbd/loc_api"
+license-file = "LICENSE"
+keywords = ["loc.gov", "library of congress", "api", "serde", "documents"]
+categories = ["api-bindings", "data-structures"]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
