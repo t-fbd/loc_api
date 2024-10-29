@@ -31,7 +31,7 @@ Add `loc-api` to your project's `Cargo.toml`:
 
 ```toml
 [dependencies]
-loc-api = "0.1.0"
+loc-api = "*"
 ```
 ~OR~
 
