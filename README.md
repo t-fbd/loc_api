@@ -1,5 +1,9 @@
 # loc-api
 
+![Crates.io](https://img.shields.io/crates/v/cdg_api)
+![License](https://img.shields.io/crates/l/cdg_api)
+![MIT License](https://img.shields.io/crates/l/cdg_api)
+
 **loc-api** is a Rust library that provides a comprehensive interface for interacting with the [Library of Congress (LOC) APIs](https://www.loc.gov/apis/). It simplifies the process of constructing API requests, managing parameters, and handling responses, enabling developers to seamlessly integrate LOC data into their Rust applications.
 
 ## Features
