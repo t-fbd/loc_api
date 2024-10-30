@@ -39,7 +39,7 @@ pub struct CommonAttributes {
 /// - `item_type`: The type/category of the item.
 /// - `url`: URL of the item on the LOC website.
 /// - `subject_headings`: Subject headings associated with the item.
-/// - ... (continue for other fields)
+/// - ... etc.
 ///
 /// # Notes
 ///
