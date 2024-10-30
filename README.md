@@ -269,7 +269,15 @@ Structures that model the responses from LOC API endpoints, such as `SearchResul
 
 Provides a high-level `ApiClient` for interacting with the LOC API, abstracting endpoint construction, parameter management, and HTTP requests.
 
+## Other Projects
+
+- [cdg_api](https://crates.io/crates/cdg_api): A Rust library for interacting with the Congress.gov API.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Repository
+
+[t-fbd](https://github.com/t-fbd/loc_api)
 ```
