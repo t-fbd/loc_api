@@ -3,7 +3,7 @@
 #![allow(unused_imports)]
 
 use loc_api::response_models::{ItemOrArray, StringOrArray};
-use loc_api::simple_builders::ApiClient;
+use loc_api::loc_client::ApiClient;
 use loc_api::attribute_models::{AttributesSelect, ItemAttributes, SortField};
 use loc_api::format_models::{MediaType, Format};
 use loc_api::param_models::FacetReq;

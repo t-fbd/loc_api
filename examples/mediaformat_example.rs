@@ -1,4 +1,4 @@
-use loc_api::simple_builders::ApiClient;
+use loc_api::loc_client::ApiClient;
 use loc_api::param_models::FacetReq;
 use loc_api::attribute_models::AttributesSelect;
 use loc_api::attribute_models::SortField;

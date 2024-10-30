@@ -1,4 +1,4 @@
-use loc_api::simple_builders::ApiClient;
+use loc_api::loc_client::ApiClient;
 use loc_api::attribute_models::ItemAttributes;
 
 /// Example of retrieving an item response

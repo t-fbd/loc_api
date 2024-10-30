@@ -19,7 +19,7 @@
 - [Examples](#examples)
     - [Creating an API Client](#creating-an-api-client)
     - [Using the modules directly to construct a URL for querying specific types of `MediaType`](#using-the-modules-directly-to-construct-a-url-for-querying-specific-types-of-mediatype)
-    - [Using the simple_builders module to make a search request](#using-the-simple_builders-module-to-make-a-search-request)
+    - [Using the loc_client module to make a search request](#using-the-loc_client-module-to-make-a-search-request)
 - [Modules](#modules)
 - [License](#license)
 
@@ -54,10 +54,10 @@ serde_json = "1.0"
 ### Creating an API Client
 
 First, initialize the `ApiClient`. You can optionally set the `LOC_API_BASE_URL` environment variable to override the default LOC API base URL.
-Other methods of setting the base URL include using the `ApiClient::with_base_url` constructor or directly modifying the `simple_builders::DEFAULT_BASE_URL` constant.
+Other methods of setting the base URL include using the `ApiClient::with_base_url` constructor or directly modifying the `loc_client::DEFAULT_BASE_URL` constant.
 
 ```rust
-use loc_api::simple_builders::ApiClient;
+use loc_api::loc_client::ApiClient;
 
 fn main() {
     let client = ApiClient::new();
@@ -105,10 +105,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-### Using the simple_builders module to make a search request
+### Using the loc_client module to make a search request
 
 ```rust
-use loc_api::simple_builders::ApiClient;
+use loc_api::loc_client::ApiClient;
 use loc_api::param_models::FacetReq;
 use loc_api::attribute_models::AttributesSelect;
 use loc_api::attribute_models::SortField;
@@ -163,7 +163,7 @@ Represents the possible response formats (`JSON` or `YAML`) and specific media t
 
 Structures that model the responses from LOC API endpoints, such as `SearchResultResponse`, `ItemResponse`, `FormatResponse`, and others.
 
-- `simple_builders`
+- `loc_client`
 
 Provides a high-level `ApiClient` for interacting with the LOC API, abstracting endpoint construction, parameter management, and HTTP requests.
 
