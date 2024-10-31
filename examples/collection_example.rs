@@ -9,14 +9,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = client.get_collection(
         "civil war maps",
         None,
-        Some(AttributesSelect {
+        AttributesSelect {
             include: vec!["pagination".to_string(), "results".to_string()],
             exclude: vec![],
-        }),
-        Some(FacetReq { filters: vec!["subject:geography".to_string()] }),
-        Some(10),
-        Some(1),
-        Some(SortField::TitleS),
+        }.into(),
+        FacetReq { filters: vec!["subject:geography".to_string()] }.into(),
+        10.into(),
+        1.into(),
+        SortField::TitleS.into(),
     )?;
 
     println!("url: {}", response.1);
