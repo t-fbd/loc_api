@@ -1,5 +1,5 @@
 use loc_api::loc_client::ApiClient;
-use loc_api::param_models::FacetReq;
+use loc_api::param_models::{FacetReq, Facet};
 use loc_api::attribute_models::AttributesSelect;
 use loc_api::attribute_models::SortField;
 
@@ -13,7 +13,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             include: vec!["pagination".to_string(), "results".to_string()],
             exclude: vec![],
         }.into(),
-        FacetReq { filters: vec!["subject:geography".to_string()] }.into(),
+        FacetReq { filters: vec![Facet::Subject { value: "geography".to_string() }] }.into(),
         10.into(),
         1.into(),
         SortField::TitleS.into(),

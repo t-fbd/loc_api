@@ -80,7 +80,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
        }.into(),
        query: "dog".to_string().into(),
        filter: FacetReq {
-           filters: vec!["subject:animals".to_string()],
+           filters: vec![Facet::Subject {value: "animals".to_string()}]
        }.into(),
        per_page: 25.into(),
        page: 1.into(),
@@ -104,7 +104,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ```rust
 use loc_api::loc_client::ApiClient;
-use loc_api::param_models::FacetReq;
+use loc_api::param_models::{Facet, FacetReq};
 use loc_api::attribute_models::AttributesSelect;
 use loc_api::attribute_models::SortField;
 
@@ -117,7 +117,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             include: vec!["pagination".to_string(), "results".to_string()],
             exclude: vec![],
         }.into(),
-        FacetReq { filters: vec!["subject:sports".to_string()] }.into(),
+        FacetReq { filters: vec![Facet::Subject {value: "sports".to_string()}] }.into(),
         25.into(),
         1.into(),
         SortField::DateDesc.into(),

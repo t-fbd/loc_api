@@ -1,5 +1,5 @@
 use loc_api::loc_client::ApiClient;
-use loc_api::param_models::FacetReq;
+use loc_api::param_models::{Facet, FacetReq};
 use loc_api::attribute_models::AttributesSelect;
 
 /// Example of searching for items and retrieving the results
@@ -14,8 +14,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }.into(),
         FacetReq { 
             filters: vec![
-                "subject:united+states".to_string(), 
-                "online-format:online+text".to_string()
+                Facet::Subject { value: "united states".to_string() },
+                Facet::OnlineFormat { value: "online text".to_string() },
             ] 
         }.into(),
         25.into(),

@@ -1,4 +1,4 @@
-use crate::{format_models::*, attribute_models::*};
+use crate::{attribute_models::*, format_models::*};
 use serde::{Deserialize, Serialize};
 
 /// Represents common query parameters applicable to multiple endpoints.
@@ -53,7 +53,7 @@ pub struct ResourceParams {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct FacetReq {
     /// A list of facet filters (e.g., `"location:ohio"`, `"subject:wildlife"`).
-    pub filters: Vec<String>,
+    pub filters: Vec<Facet>,
 }
 
 impl FacetReq {
@@ -64,15 +64,55 @@ impl FacetReq {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::param_models::FacetReq;
+    /// use loc_api::param_models::{FacetReq, Facet};
     ///
     /// let filter = FacetReq {
-    ///     filters: vec!["location:ohio".to_string(), "subject:wildlife".to_string()],
+    ///     filters: vec![Facet::Location { value: "ohio".to_string(), }, Facet::Subject { value: "wildlife".to_string(), }],
     /// };
     /// assert_eq!(filter.to_query_param(), "location:ohio|subject:wildlife");
     /// ```
     pub fn to_query_param(&self) -> String {
-        self.filters.join("|")
+        self.filters.iter().map(|f| f.to_string()).collect::<Vec<String>>().join("|")
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub enum Facet {
+    AccessRestricted {
+        value: bool,
+    },
+    Contributor {
+        value: String,
+    },
+    Language {
+        value: String,
+    },
+    Subject {
+        value: String,
+    },
+    Location {
+        value: String,
+    },
+    OnlineFormat {
+        value: String,
+    },
+    Other {
+        key: String,
+        value: String,
+    },
+}
+
+impl Facet {
+    fn to_string(&self) -> String {
+        match self {
+            Facet::AccessRestricted { value } => format!("access_restricted:{}", value),
+            Facet::Contributor { value } => format!("contributor:{}", value.replace(" ", "+")),
+            Facet::Language { value } => format!("language:{}", value.replace(" ", "+")),
+            Facet::Subject { value } => format!("subject:{}", value.replace(" ", "+")),
+            Facet::Location { value } => format!("location:{}", value.replace(" ", "+")),
+            Facet::OnlineFormat { value } => format!("online-format:{}", value.replace(" ", "+")),
+            Facet::Other { key, value } => format!("{}:{}", key, value.replace(" ", "+")),
+        }
     }
 }
 

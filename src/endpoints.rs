@@ -71,7 +71,7 @@ fn to_url_helper(common: &CommonParams) -> String {
         None => "".to_string(),
     };
     let filter = match common.filter {
-        Some(ref f) => format!("&fa={}", f.filters.join("|")),
+        Some(ref f) => format!("&fa={}", f.to_query_param()),
         None => "".to_string(),
     };
     let per_page = match common.per_page {
@@ -111,7 +111,7 @@ impl Endpoints {
     ///     }),
     ///     query: Some("dog".to_string()),
     ///     filter: Some(FacetReq {
-    ///         filters: vec!["subject:animals".to_string()],
+    ///         filters: vec![Facet::Subject { value: "animals".to_string() }],
     ///     }),
     ///     per_page: Some(25),
     ///     page: Some(1),

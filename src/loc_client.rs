@@ -60,7 +60,7 @@ impl ApiClient {
     ///
     /// ```rust
     /// use loc_api::loc_client::ApiClient;
-    /// use loc_api::param_models::{FacetReq, SearchParams};
+    /// use loc_api::param_models::{FacetReq, SearchParams, Facet};
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::Format;
     ///
@@ -72,7 +72,7 @@ impl ApiClient {
     ///         include: vec!["pagination".to_string(), "results".to_string()],
     ///         exclude: vec![],
     ///     }),
-    ///     Some(FacetReq { filters: vec!["subject:sports".to_string()] }),
+    ///     Some(FacetReq { filters: vec![Facet::Subject { value: "sports".to_string() }] }),
     ///     Some(25),
     ///     Some(1),
     ///     Some(SortField::DateDesc),
@@ -89,9 +89,9 @@ impl ApiClient {
         sort: Option<SortField>,
     ) -> Result<(SearchResultResponse, String), Box<dyn Error>> {
         let common_params = CommonParams {
-            format: Some(Format::default()),
+            format: Format::default().into(),
             attributes,
-            query: Some(query.to_string().replace(" ", "+")),
+            query: query.to_string().replace(" ", "+").into(),
             filter: filters,
             per_page,
             page,
@@ -187,7 +187,7 @@ impl ApiClient {
     ///
     /// ```rust
     /// use loc_api::loc_client::ApiClient;
-    /// use loc_api::param_models::FacetReq;
+    /// use loc_api::param_models::{FacetReq, Facet};
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::{Format, MediaType};
     ///
@@ -199,7 +199,7 @@ impl ApiClient {
     ///         include: vec!["pagination".to_string(), "results".to_string()],
     ///         exclude: vec![],
     ///     }),
-    ///     Some(FacetReq { filters: vec!["subject:geography".to_string()] }),
+    ///     Some(FacetReq { filters: vec![Facet::Subject { value: "geography".to_string() }] }),
     ///     Some(10),
     ///     Some(1),
     ///     Some(SortField::TitleS),
@@ -261,7 +261,7 @@ impl ApiClient {
     ///
     /// ```rust
     /// use loc_api::loc_client::ApiClient;
-    /// use loc_api::param_models::FacetReq;
+    /// use loc_api::param_models::{FacetReq, Facet};
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::Format;
     /// use loc_api::response_models::CollectionResponse;
@@ -274,7 +274,7 @@ impl ApiClient {
     ///         include: vec!["pagination".to_string(), "results".to_string()],
     ///         exclude: vec![],
     ///     }),
-    ///     Some(FacetReq { filters: vec!["subject:geography".to_string()] }),
+    ///     Some(FacetReq { filters: vec![Facet::Subject { value: "geography".to_string() }] }),
     ///     Some(10),
     ///     Some(1),
     ///     Some(SortField::TitleS),
@@ -345,7 +345,7 @@ impl ApiClient {
     ///
     /// ```rust
     /// use loc_api::loc_client::ApiClient;
-    /// use loc_api::param_models::FacetReq;
+    /// use loc_api::param_models::{FacetReq, Facet};
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::Format;
     ///
@@ -356,7 +356,7 @@ impl ApiClient {
     ///         include: vec!["pagination".to_string(), "results".to_string()],
     ///         exclude: vec![],
     ///     }),
-    ///     Some(FacetReq { filters: vec!["subject:geography".to_string()] }),
+    ///     Some(FacetReq { filters: vec![Facet::Subject { value: "geography".to_string() }] }),
     ///     Some(10),
     ///     Some(1),
     ///     Some(SortField::TitleS),

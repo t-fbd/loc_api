@@ -6,7 +6,7 @@ use loc_api::response_models::{ItemOrArray, StringOrArray};
 use loc_api::loc_client::ApiClient;
 use loc_api::attribute_models::{AttributesSelect, ItemAttributes, SortField};
 use loc_api::format_models::{MediaType, Format};
-use loc_api::param_models::FacetReq;
+use loc_api::param_models::{Facet, FacetReq};
 use reqwest::blocking::Client;
 use std::env;
 
@@ -23,7 +23,7 @@ fn test_search_endpoint() {
             include: vec!["pagination".to_string(), "results".to_string()],
             exclude: vec![],
         }),
-        Some(FacetReq { filters: vec!["subject:sports".to_string()] }),
+        Some(FacetReq { filters: vec![Facet::Subject { value: "sports".to_string() }] }),
         Some(25),
         Some(1),
         Some(SortField::DateDesc),
@@ -102,7 +102,7 @@ fn test_format_endpoint() {
             include: vec!["pagination".to_string(), "results".to_string()],
             exclude: vec![],
         }),
-        Some(FacetReq { filters: vec!["subject:geography".to_string()] }),
+        Some(FacetReq { filters: vec![Facet::Subject { value: "geography".to_string() }] }),
         Some(10),
         Some(1),
         Some(SortField::TitleS),
