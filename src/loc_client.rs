@@ -1,4 +1,4 @@
-//! The `simple_builders` module provides a high-level interface for interacting with
+//! The `loc_client` module provides a high-level interface for interacting with
 //! the Library of Congress API. It abstracts the complexities of endpoint construction,
 //! parameter management, and HTTP requests, offering straightforward methods for common operations.
 //!
@@ -30,7 +30,7 @@ impl ApiClient {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::simple_builders::ApiClient;
+    /// use loc_api::loc_client::ApiClient;
     ///
     /// let client = ApiClient::new();
     /// ```
@@ -59,7 +59,7 @@ impl ApiClient {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::simple_builders::ApiClient;
+    /// use loc_api::loc_client::ApiClient;
     /// use loc_api::param_models::{FacetReq, SearchParams};
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::Format;
@@ -128,7 +128,7 @@ impl ApiClient {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::simple_builders::ApiClient;
+    /// use loc_api::loc_client::ApiClient;
     /// use loc_api::param_models::ItemParams;
     /// use loc_api::attribute_models::ItemAttributes;
     /// use loc_api::format_models::Format;
@@ -186,7 +186,7 @@ impl ApiClient {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::simple_builders::ApiClient;
+    /// use loc_api::loc_client::ApiClient;
     /// use loc_api::param_models::FacetReq;
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::{Format, MediaType};
@@ -260,7 +260,7 @@ impl ApiClient {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::simple_builders::ApiClient;
+    /// use loc_api::loc_client::ApiClient;
     /// use loc_api::param_models::FacetReq;
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::Format;
@@ -344,7 +344,7 @@ impl ApiClient {
     /// # Examples
     ///
     /// ```rust
-    /// use loc_api::simple_builders::ApiClient;
+    /// use loc_api::loc_client::ApiClient;
     /// use loc_api::param_models::FacetReq;
     /// use loc_api::attribute_models::{AttributesSelect, SortField};
     /// use loc_api::format_models::Format;

@@ -73,28 +73,23 @@ response_models::*};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
    let common_params = CommonParams {
-       format: Some(Format::Json),
-       attributes: Some(AttributesSelect {
+       format: Format::Json.into(),
+       attributes: AttributesSelect {
            include: vec!["pagination".to_string(), "results".to_string()],
            exclude: vec![],
-       }),
-       query: Some("dog".to_string()),
-       filter: Some(FacetReq {
+       }.into(),
+       query: "dog".to_string().into(),
+       filter: FacetReq {
            filters: vec!["subject:animals".to_string()],
-       }),
-       per_page: Some(25),
-       page: Some(1),
-       sort: Some(SortField::TitleS),
-   };
-   
-   let format_params = CommonParams {
-       format: Some(Format::Json),
-       ..common_params.clone()
+       }.into(),
+       per_page: 25.into(),
+       page: 1.into(),
+       sort: SortField::TitleS.into(),
    };
    
    let format_endpoint = Endpoints::Format {
        format: MediaType::FilmAndVideos,
-       params: format_params,
+       params: common_params,
    };
    
    let url = format_endpoint.to_url().unwrap();
@@ -118,14 +113,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = client.search(
         "baseball",
         false,
-        Some(AttributesSelect {
+        AttributesSelect {
             include: vec!["pagination".to_string(), "results".to_string()],
             exclude: vec![],
-        }),
-        Some(FacetReq { filters: vec!["subject:sports".to_string()] }),
-        Some(25),
-        Some(1),
-        Some(SortField::DateDesc),
+        }.into(),
+        FacetReq { filters: vec!["subject:sports".to_string()] }.into(),
+        25.into(),
+        1.into(),
+        SortField::DateDesc.into(),
     )?;
 
     println!("url: {}", response.1);
