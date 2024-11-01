@@ -5,13 +5,8 @@
 
 **loc-api** is a Rust library that provides a comprehensive interface for interacting with the [Library of Congress (LOC) APIs](https://www.loc.gov/apis/). It simplifies the process of constructing API requests, managing parameters, and handling responses, enabling developers to seamlessly integrate LOC data into their Rust applications.
 
-## Features
-
-- **Comprehensive Endpoint Support**: Access various LOC API endpoints such as search, collections, items, and resources.
-- **Flexible Parameter Management**: Easily construct and customize query parameters, including filtering, sorting, and formatting options.
-- **Robust Response Models**: Utilize well-defined Rust structures to parse and interact with LOC API responses.
-- **High-Level API Client**: Engage with LOC APIs through an `ApiClient` that handles endpoint construction and HTTP requests.
-- **Customizable Configurations**: Override default settings like the base URL for testing or alternative deployments.
+Work in progress, not everything is implemented yet, however, the library is functional and can be used to interact with the LOC API. Check out the [examples](#examples) below to see how to use the library.
+The included `examples` directory within the repository contains a few more examples as well.
 
 ## Table of Contents
 
