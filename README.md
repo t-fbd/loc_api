@@ -8,6 +8,8 @@
 Work in progress, not everything is implemented yet, however, the library is functional and can be used to interact with the LOC API. Check out the [examples](#examples) below to see how to use the library.
 The included `examples` directory within the repository contains a few more examples as well.
 
+Please report any issues or bugs, I'm sure there are many. I'm also open to suggestions and contributions.
+
 ## Table of Contents
 
 - [Installation](#installation)
