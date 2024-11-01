@@ -21,7 +21,7 @@ pub struct ApiClient {
 }
 
 impl ApiClient {
-    /// Creates a new `ApiClient` instance.
+    /// Creates a new [`ApiClient`] instance.
     ///
     /// The base URL can be overridden by setting the `LOC_API_BASE_URL` environment variable.
     ///
@@ -54,7 +54,7 @@ impl ApiClient {
     ///
     /// # Returns
     ///
-    /// Returns a `SearchResultResponse` on success.
+    /// Returns a [`SearchResultResponse`] on success.
     ///
     /// # Examples
     ///
@@ -123,7 +123,7 @@ impl ApiClient {
     ///
     /// # Returns
     ///
-    /// Returns an `ItemResponse` on success.
+    /// Returns an [`ItemResponse`] on success.
     ///
     /// # Examples
     ///
@@ -181,7 +181,7 @@ impl ApiClient {
     ///
     /// # Returns
     ///
-    /// Returns a `FormatResponse` on success.
+    /// Returns a [`FormatResponse`] on success.
     ///
     /// # Examples
     ///
@@ -255,7 +255,7 @@ impl ApiClient {
     ///
     /// # Returns
     ///
-    /// Returns a `CollectionResponse` on success.
+    /// Returns a [`CollectionResponse`] on success.
     ///
     /// # Examples
     ///
@@ -339,7 +339,7 @@ impl ApiClient {
     ///
     /// # Returns
     ///
-    /// Returns a `CollectionsResponse` on success.
+    /// Returns a [`CollectionsResponse`] on success.
     ///
     /// # Examples
     ///
@@ -395,7 +395,7 @@ impl ApiClient {
 
     /// Helper method to replace the default base URL in the endpoint URL with the client's base_url.
     ///
-    /// This is necessary because the `Endpoints::to_url()` method includes a hardcoded base URL.
+    /// This is necessary because the [`Endpoints::to_url()`] method includes a hardcoded base URL.
     ///
     /// # Parameters
     ///

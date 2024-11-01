@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-/// Represents a value that can be either a single `String` or a `Vec<String>`.
+/// Represents a value that can be either a single [`String`] or a `Vec<String>`.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum StringOrArray {
@@ -9,7 +9,7 @@ pub enum StringOrArray {
     Array(Vec<String>),
 }
 
-/// Represents a value that can be either a `u32` or a `String`.
+/// Represents a value that can be either a [`u32`] or a [`String`].
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum NumberOrString {
@@ -17,7 +17,7 @@ pub enum NumberOrString {
     String(String),
 }
 
-/// Represents a value that can be either a `bool` or a `String`.
+/// Represents a value that can be either a [`bool`] or a [`String`].
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum BoolOrString {
@@ -41,7 +41,7 @@ pub struct FacetRes {
     pub filters: Option<ItemOrArray<FilterItem>>,
 }
 
-/// Represents a single filter within a `FacetRes`.
+/// Represents a single filter within a [`FacetRes`].
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct FilterItem {
     /// The number of results matching this filter.
@@ -85,7 +85,7 @@ pub struct Pagination {
     /// Number of result items per page.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub perpage: Option<NumberOrString>,
-    /// Available options for `perpage`.
+    /// Available options for [`perpage`].
     #[serde(skip_serializing_if = "Option::is_none")]
     pub perpage_options: Option<ItemOrArray<u32>>,
     /// Total number of pages available.
@@ -572,7 +572,7 @@ pub struct File {
     pub url: Option<StringOrArray>,
     /// Usage description of the file (e.g., "newspaper").
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub use_field: Option<StringOrArray>, // `use` is a reserved keyword in Rust
+    pub use_field: Option<StringOrArray>, // [`use`] is a reserved keyword in Rust
     /// Width of the media file in pixels, if applicable.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub width: Option<NumberOrString>,
@@ -632,7 +632,7 @@ pub struct Page {
     pub additional: Option<Value>,
 }
 
-/// Represents the item attribute object within `ItemResponse` and `ResourceResponse`.
+/// Represents the item attribute object within [`ItemResponse`] and [`ResourceResponse`].
 #[derive(Debug, Serialize, Deserialize, Clone, Default)]
 pub struct ItemAttribute {
     /// Place of publication.
@@ -777,7 +777,7 @@ pub struct ItemAttribute {
     pub additional: Option<Value>,
 }
 
-/// Represents a single resource object within `ItemResponse` and `ResourceResponse`.
+/// Represents a single resource object within [`ItemResponse`] and [`ResourceResponse`].
 #[derive(Debug, Serialize, Deserialize, Clone, Default)]
 pub struct ResourceObject {
     /// Files associated with the resource.

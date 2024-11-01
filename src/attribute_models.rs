@@ -117,7 +117,7 @@ pub struct AttributesSelect {
 }
 
 impl AttributesSelect {
-    /// Converts the `AttributesSelect` struct into a query parameter string.
+    /// Converts the [`AttributesSelect`] struct into a query parameter string.
     ///
     /// The function concatenates included attributes with commas and appends exclamation marks for exclusions.
     ///

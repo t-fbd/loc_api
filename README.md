@@ -6,7 +6,7 @@
 **loc-api** is a Rust library that provides a comprehensive interface for interacting with the [Library of Congress (LOC) APIs](https://www.loc.gov/apis/). It simplifies the process of constructing API requests, managing parameters, and handling responses, enabling developers to seamlessly integrate LOC data into their Rust applications.
 
 Work in progress, not everything is implemented yet, however, the library is functional and can be used to interact with the LOC API. Check out the [examples](#examples) below to see how to use the library.
-The included `examples` directory within the repository contains a few more examples as well.
+The included [`examples`] directory within the repository contains a few more examples as well.
 
 Please report any issues or bugs, I'm sure there are many. I'm also open to suggestions and contributions.
 
@@ -15,7 +15,7 @@ Please report any issues or bugs, I'm sure there are many. I'm also open to sugg
 - [Installation](#installation)
 - [Examples](#examples)
     - [Creating an API Client](#creating-an-api-client)
-    - [Using the modules directly to construct a URL for querying specific types of `MediaType`](#using-the-modules-directly-to-construct-a-url-for-querying-specific-types-of-mediatype)
+    - [Using the modules directly to construct a URL for querying specific types of [`MediaType`]](#using-the-modules-directly-to-construct-a-url-for-querying-specific-types-of-mediatype)
     - [Using the loc_client module to make a search request](#using-the-loc_client-module-to-make-a-search-request)
 - [Modules](#modules)
 - [License](#license)
@@ -37,7 +37,7 @@ cargo add loc-api
 ```
 
 
-This library depends on `reqwest`, `serde` and `serde_json` for making HTTP requests and serializing/deserializing JSON data, respectively:
+This library depends on [`reqwest`], [`serde`] and [`serde_json`] for making HTTP requests and serializing/deserializing JSON data, respectively:
 
 ```toml
 [dependencies]
@@ -50,7 +50,7 @@ serde_json = "1.0"
 
 ### Creating an API Client
 
-First, initialize the `ApiClient`. You can optionally set the `LOC_API_BASE_URL` environment variable to override the default LOC API base URL.
+First, initialize the [`ApiClient`]. You can optionally set the [`LOC_API_BASE_URL`] environment variable to override the default LOC API base URL.
 Other methods of setting the base URL include using the `ApiClient::with_base_url` constructor or directly modifying the `loc_client::DEFAULT_BASE_URL` constant.
 
 ```rust
@@ -58,11 +58,11 @@ use loc_api::loc_client::ApiClient;
 
 fn main() {
     let client = ApiClient::new();
-    // Now you can use `client` to interact with the LOC APIs
+    // Now you can use [`client`] to interact with the LOC APIs
 }
 ```
 
-### Using the modules directly to construct a URL for querying specific types of `MediaType`
+### Using the modules directly to construct a URL for querying specific types of [`MediaType`]
 
 ```rust
 use loc_api::{endpoints::*, param_models::*, format_models::*, attribute_models::*,
@@ -135,29 +135,29 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Modules
 
-- `endpoints`
+- [`endpoints`]
 
 LOC API endpoints, providing enums and methods to construct URLs based on different endpoints and parameters.
 
-- `param_models`
+- [`param_models`]
 
-Contains structures representing query parameters applicable to multiple endpoints, such as `CommonParams`, `SearchParams`, `ItemParams`, and `ResourceParams`.
+Contains structures representing query parameters applicable to multiple endpoints, such as [`CommonParams`], [`SearchParams`], [`ItemParams`], and [`ResourceParams`].
 
-- `attribute_models`
+- [`attribute_models`]
 
-Defines the possible attributes for query parameters that can be used in API requests, including structures like `AttributesSelect` and enums for sorting fields.
+Defines the possible attributes for query parameters that can be used in API requests, including structures like [`AttributesSelect`] and enums for sorting fields.
 
-- `format_models`
+- [`format_models`]
 
-Represents the possible response formats (`JSON` or `YAML`) and specific media types for endpoints like `audio`, `books`, `maps`, etc.
+Represents the possible response formats ([`JSON`] or [`YAML`]) and specific media types for endpoints like [`audio`], [`books`], [`maps`], etc.
 
-- `response_models`
+- [`response_models`]
 
-Structures that model the responses from LOC API endpoints, such as `SearchResultResponse`, `ItemResponse`, `FormatResponse`, and others.
+Structures that model the responses from LOC API endpoints, such as [`SearchResultResponse`], [`ItemResponse`], [`FormatResponse`], and others.
 
-- `loc_client`
+- [`loc_client`]
 
-Provides a high-level `ApiClient` for interacting with the LOC API, abstracting endpoint construction, parameter management, and HTTP requests.
+Provides a high-level [`ApiClient`] for interacting with the LOC API, abstracting endpoint construction, parameter management, and HTTP requests.
 
 ## Other Projects
 
