@@ -161,7 +161,9 @@ Provides a high-level [`ApiClient`] for interacting with the LOC API, abstractin
 
 ## Other Projects
 
-- [cdg_api](https://crates.io/crates/cdg_api): A Rust library for interacting with the Congress.gov API.
+- **[cdg_api](https://crates.io/crates/cdg_api)**: A Rust library for interacting with the Congress.gov API.
+
+- **[congress_rollcalls](https://github.com/t-fbd/congress_rollcalls)**: Github repository holding mass data of roll call votes in the US Congress.
 
 ## License
 
@@ -170,4 +172,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Repository
 
 [t-fbd](https://github.com/t-fbd/loc_api)
-```
+
+The data is sourced from the [U.S. Library of Congress](https://www.loc.gov/).
+
+## Contact
+
+For questions or feedback, please contact me on [github](https://www.github.com/t-fbd) or email me [here](mailto:tairenfd@mailbox.org).
+
+If you find this project helpful, consider donating [PayPal](https://paypal.me/imturn?country.x=US&locale.x=en_US).
