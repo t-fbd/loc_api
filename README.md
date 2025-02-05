@@ -3,22 +3,13 @@
 ![Crates.io](https://img.shields.io/crates/v/loc_api)
 ![MIT License](https://img.shields.io/crates/l/loc_api)
 
-**loc-api** is a Rust library that provides a comprehensive interface for interacting with the [Library of Congress (LOC) APIs](https://www.loc.gov/apis/). It simplifies the process of constructing API requests, managing parameters, and handling responses, enabling developers to seamlessly integrate LOC data into their Rust applications.
+**loc-api** is a Rust library that provides an interface for interacting with the [Library of Congress (LOC) APIs](https://www.loc.gov/apis/). It simplifies the process of constructing API requests, 
+managing parameters, and handling responses, enabling developers to seamlessly integrate LOC data into their Rust applications.
 
-Work in progress, not everything is implemented yet, however, the library is functional and can be used to interact with the LOC API. Check out the [examples](#examples) below to see how to use the library.
-The included [`examples`] directory within the repository contains a few more examples as well.
+Work in progress, not everything is implemented yet, however, the library is functional and can be used to interact with the LOC API. 
+Check out the [examples](#examples) below to see how to use the library. The included [examples directory](examples/) within the repository contains a few more examples as well.
 
 Please report any issues or bugs, I'm sure there are many. I'm also open to suggestions and contributions.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Examples](#examples)
-    - [Creating an API Client](#creating-an-api-client)
-    - [Using the modules directly to construct a URL for querying specific types of [`MediaType`]](#using-the-modules-directly-to-construct-a-url-for-querying-specific-types-of-mediatype)
-    - [Using the loc_client module to make a search request](#using-the-loc_client-module-to-make-a-search-request)
-- [Modules](#modules)
-- [License](#license)
 
 ## Installation
 
@@ -26,7 +17,7 @@ Add `loc-api` to your project's `Cargo.toml`:
 
 ```toml
 [dependencies]
-loc-api = "*"
+loc-api = "1.0.8"
 ```
 OR
 
@@ -133,38 +124,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-## Modules
+## Related Projects
 
-- [`endpoints`]
-
-LOC API endpoints, providing enums and methods to construct URLs based on different endpoints and parameters.
-
-- [`param_models`]
-
-Contains structures representing query parameters applicable to multiple endpoints, such as [`CommonParams`], [`SearchParams`], [`ItemParams`], and [`ResourceParams`].
-
-- [`attribute_models`]
-
-Defines the possible attributes for query parameters that can be used in API requests, including structures like [`AttributesSelect`] and enums for sorting fields.
-
-- [`format_models`]
-
-Represents the possible response formats ([`JSON`] or [`YAML`]) and specific media types for endpoints like [`audio`], [`books`], [`maps`], etc.
-
-- [`response_models`]
-
-Structures that model the responses from LOC API endpoints, such as [`SearchResultResponse`], [`ItemResponse`], [`FormatResponse`], and others.
-
-- [`loc_client`]
-
-Provides a high-level [`ApiClient`] for interacting with the LOC API, abstracting endpoint construction, parameter management, and HTTP requests.
-
-## Other Projects
-
-- **[cdg_api](https://crates.io/crates/cdg_api)**: A Rust library for interacting with the Congress.gov API.
-
-- **[congress_rollcalls](https://github.com/t-fbd/congress_rollcalls)**: Github repository holding mass data of roll call votes in the US Congress.
-
+- **[cdg_api]: A Rust library for interacting with the Congress.gov API.
+    - [crate](https://crates.io/crates/cdg_api)
+    - [repository](https://github.com/t-fbd/cdg_api)
+   
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
@@ -173,10 +138,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 [t-fbd](https://github.com/t-fbd/loc_api)
 
-The data is sourced from the [U.S. Library of Congress](https://www.loc.gov/).
+## Acknowledgements
+
+The data is sourced from the [U.S. Library of Congress](https://www.loc.gov/apis/).
 
 ## Contact
 
-For questions or feedback, please contact me on [github](https://www.github.com/t-fbd) or email me [here](mailto:tairenfd@mailbox.org).
+For questions or feedback, please contact me on [github](https://www.github.com/t-fbd).
 
 If you find this project helpful, consider donating [PayPal](https://paypal.me/imturn?country.x=US&locale.x=en_US).
